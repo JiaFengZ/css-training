@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>transition</title>
+      <meta charset="utf-8"/>
+      <style>
+        .content {
+          text-align: center;
+          padding: 20px;
+        }
+        .button {
+          height: 35px;
+          border: solid 1px #ddd;
+          border-radius: 2px;
+          color: #333;
+          padding: 0 10px;
+          cursor: default;
+          background: #fff;
+          margin: 20px;
+        }
+        .button:hover {
+          background: #e2e2e2;
+        }
+        .button:active {
+          background: #eee;
+        }
+        .title {
+          display: inline-block;
+          box-sizing: border-box;
+          padding-bottom: 10px;
+          position: relative;
+          background-color: #fff;                  
+          transition: background-color 0.5s ease-in-out; /* css hack: ie after伪类元素不能触发transitionend事件，因此在父容器上设置过渡使能够触发transitionend*/
+        }
+        .title span {
+          background: #fff;
+        }
+        .title::after {
+          content: attr(title);
+          display: block;
+          background: #fff;
+          width: 0;
+          height:100%;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          text-align: left;
+          text-overflow: clip;
+          white-space: nowrap;
+          text-indent: -50%; /*非firefox可设置为 -50%*/
+          text-indent: -2em;
+          overflow: hidden;
+          color: #2a73e2;
+          border-bottom: solid 2px #2a73e2;
+          transform: translateX(-50%);
+          transition: text-indent 0.5s ease-in-out,
+                width 0.5s ease-in-out; /* after伪类元素充当覆盖层，覆盖层宽度和文字缩进组合过渡 实现蓝色文字展开效果 */
+        }
+        .title.active {
+          background-color: transparent;          
+        }
+        .title.active::after {
+          width: 100%;
+          text-indent: 0;
+        }
+      </style>
+  </head>
+  <body>
+    <div class="content">
+        <div id="title" class="title" title="前端学院"><span>前端学院</span></div><br/><!-- 标题 -->
+        <button id="button" class="button">切换样式</button><!-- 切换按钮 -->
+    </div>
+  </body>
+  <script>
+    var title = document.getElementById('title');
+    var button = document.getElementById('button');
+    function transition() {
+      title.classList.add('active');    
+      title.addEventListener('transitionend', removeTransition)  
+    }
+    function removeTransition() {
+      title.classList.remove('active');
+      title.removeEventListener('transitionend', removeTransition) //transitionend事件触发一次后移除，避免多次触发
+    }
+    button.addEventListener('click', transition);        
+  </script>
+</html>
