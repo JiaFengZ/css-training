@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>transform</title>
+    <style>
+      .container {
+        padding: 20px;
+        text-align: center;
+      }
+      .container .box {
+        width: 57px;
+        height: 67px;
+        background-color: rgb(247, 246, 246);
+        color: rgb(61, 61, 61);
+        text-align: center;
+        line-height: 67px;
+        display: inline-block;
+        border: solid 1px rgb(235, 235, 235);
+        margin: 0 20px;
+      }
+      .container .box.box1 {
+        transform: skewX(30deg);                                                                                                  
+      }
+      .container .box.box2 {
+        transform: scaleX(0.5);
+      }
+      .container .box.box3 {
+        transform: rotate(45deg);
+      }
+      .container .box.box4 {
+        transform: translate(10px, 20px);
+      }
+      .container .box.box5 {
+        /* matrix(0, 0, 0, 0, 10, 20) matrix(1, 0, √3/3, 1, 0, 0) matrix(0.5, 0, 0, 1, 0, 0) matrix(√2/2,√2/2, -√2/2, √2/2, 0, 0) */
+        transform: matrix(0.35355339, 0.35355339, -0.29885849, 1.1153550, 1.09389800, 29.37816924);
+        /*matrix(2, 0, 0, 1, 10, 20) matrix(√2/2,√2/2, -√2/2, √2/2, 0, 0) matrix(1, 0, √3/3, 1, 0, 0)  */
+        transform: matrix(0.76180, 0.707107, 0.054695, 0.707107, 8.71191, 21.2132);
+      }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+        <div class="box box0"><span>box0</span></div>
+        <div class="box box1"><span>box1</span></div>
+        <div class="box box2"><span>box2</span></div>
+        <div class="box box3"><span>box3</span></div>
+        <div class="box box4"><span>box4</span></div>
+        <div class="box box5"><span>box5</span></div>
+      </div>
+  </body>
+</html>
