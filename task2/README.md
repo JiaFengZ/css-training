@@ -8,7 +8,7 @@
 * `scale`: `skewX(n)` x轴方向缩放，`scaleY(n)` y轴方向缩放，`scale(n, m)` 同时xy轴缩放
 * 可通过 `transform-origin`改变变换的参照中心点
 
-上面都是 2D transform的简写方法，可是使用matrix()矩阵变换综合实现所有变换效果：  
+上面都是 2D transform的快捷方法，可以使用matrix()矩阵变换综合实现所有变换效果：  
 * `matric(a, b, c, d, e, f)`  
 * `matrix(1, 0, 0, 1, x, y)`：平移，x和y分别是x和y方向的平移量，等同于translate(x, y)
 * `matrix(n, 0, 0, m, 0, 0)`：缩放，n和m分别是xy方向的缩放倍数，等同于skew(n ,m)
@@ -23,7 +23,7 @@ b d f  *  y  =  bx+dy +f =  y1
 0 0 1     1       1         1  
 ```
 
-上面是矩阵相乘的计算，行列对应项相乘后相加，得到的 x1坐标就是 ax+cy+e，y1坐标就是 bx+dy +f，因此有结果：`(x, y)` →`(ax+cy+e,  bx+dy +f)`。<br/>
+上面是矩阵相乘的计算，行列对应项相乘后相加，得到的 x1坐标就是 ax+cy+e，y1坐标就是 bx+dy+f，因此有结果：`(x, y)` →`(ax+cy+e,  bx+dy +f)`。<br/>
 * 如果平移，那么 dx = ax+cy+e - x，dy = bx+dy +f - y，由于matrix默认的变换中心点是元素中心，假设元素中心坐标为(0, 0)，那么平移后 dx = e, dy = f ,因此坐标为（e, f）
 
 ## 1.3 变换叠加
