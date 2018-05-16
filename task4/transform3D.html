@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css transform 3D</title>
+		<style>
+			.container {
+				perspective: 1000px;
+				perspective-origin: 50% 50%;
+				margin-top: 100px;
+				text-align: center;
+				font-size: 0;
+				position: fixed;
+				left: calc(50% - 125px);
+			}
+			.container img {
+				transition: transform 1s ease;				
+				transform-style: preserve-3d;
+				position: absolute;
+				width: 250px;
+			}
+			.container img.positive {
+				transform: rotateY(0);
+			}
+			.container img.opposite {
+				transform: rotateY(-180deg);
+				backface-visibility: hidden;
+			}
+			.container:hover img.positive {
+				transform: rotateY(180deg);
+			}
+			.container:hover img.opposite {
+				transform: rotateY(0);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<img class="positive" src="positive.jpg">
+			<img class="opposite" src="opposite.jpg">
+		</div>
+	</body>
+</html>
