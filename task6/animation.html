@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>animation</title>
+		<style>
+			body {
+				background: #999;
+			}
+			.img-view {				
+				margin: 0 auto;
+				width: 900px;
+				height: 600px;
+				position: relative;
+				overflow: hidden;
+			} 
+			.img-view > img {
+				width: 900px;
+			}
+			.img-container {
+				position: fixed;
+				bottom: 10px;
+				width: 100%;
+				text-align: center;
+			}
+			.img-container img {
+				width: 100px;
+				margin: 0 5px;
+			}
+			.transition {
+				animation: transition 0.5s ease-out 1;
+				position: absolute;
+			}
+			@keyframes transition {
+				from {
+					left: -500px;
+				}
+				to {
+					left: 0;
+				}
+			}
+			.transition1 {
+				animation: transition1 0.5s ease-out 1;
+				position: absolute;
+			}
+			@keyframes transition1 {
+				from {
+					top: 350px;
+				}
+				to {
+					top: 0;
+				}
+			}
+
+			.scale {
+				animation: scale 1s ease-in 1;
+				position: absolute;
+			}
+			@keyframes scale {
+				from {
+					transform: scale(0.1);
+				}
+				to {
+					transform: scale(1);
+				}
+			}
+			.scale1 {
+				animation: scale1 1s ease-out 1;
+				position: absolute;
+			}
+			@keyframes scale1 {
+				from {
+					transform: scale(2);
+				}
+				to {
+					transform: scale(1);
+				}
+			}
+
+			.rotate {
+				animation: rotate 1s ease-in-out 1;
+				position: absolute;
+			}
+			@keyframes rotate {
+				from {
+					transform: rotate(-360deg) scale(0.1);
+				}
+				to {
+					transform: rotate(0) scale(1);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="img-view">
+			<img src="animation.jpg" id="img">
+		</div>
+		<div class="img-container">			
+			<img src="animation.jpg" onclick="transition()">
+			<img src="animation.jpg" onclick="transition1()">
+			<img src="animation.jpg" onclick="scale()">
+			<img src="animation.jpg" onclick="scale1()">
+			<img src="animation.jpg" onclick="rotate()">
+		</div>
+	</body>
+
+	<script>
+		var img = document.getElementById('img');
+		function transition() {
+			img.className = 'transition'
+		}		
+		function transition1() {
+			img.className = 'transition1'
+		}
+		function scale() {
+			img.className = 'scale'
+		}
+		function scale1() {
+			img.className = 'scale1'
+		}
+		function rotate() {
+			img.className = 'rotate'
+		}		
+		
+	</script>
+</html>
