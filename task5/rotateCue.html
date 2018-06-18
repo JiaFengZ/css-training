@@ -3,15 +3,66 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>rotated cue</title>
+		<title>rotate cue</title>
 		<style>
-			
+			.wrap {
+				perspective: 1000px;
+    			perspective-origin: 50% 200px;
+			}
+			.cue {				
+				position: relative;
+				transform-style: preserve-3d;
+				perspective-origin: 50% 200px;
+				left: 300px;
+				top: 100px;
+				width: 200px;
+				height: 200px;
+				display: inline-block;
+				transform: rotateY(0);
+				transition: transform 4s linear;
+			}	
+			.cue:hover {
+				transform: rotateY(360deg);
+			}	
+			.side {
+				width: 200px;
+				height: 200px;
+				opacity: 0.5;
+				background-color: #134371;
+				border: solid 2px #1e8bf2;
+				display: inline-block;
+				position: absolute;
+			}
+			.wrap > .cue > .side:nth-child(1) {
+				transform: translateZ(100px);
+			}
+			.wrap > .cue > .side:nth-child(2) {
+				transform: rotateY(90deg) translateZ(100px);;
+			}
+			.wrap > .cue > .side:nth-child(3) {
+				transform: translateZ(-100px);
+			}
+			.wrap > .cue > .side:nth-child(4) {
+				transform: rotateY(90deg) translateZ(-100px);
+			}
+			.wrap > .cue > .side:nth-child(5) {
+				transform: rotateX(90deg) translateZ(100px);
+			}
+			.wrap > .cue > .side:nth-child(6) {
+				transform: rotateX(90deg) translateZ(-100px);
+			}
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<img class="positive" src="positive.jpg">
-			<img class="opposite" src="opposite.jpg">
+		<div class="wrap">
+			<div class="cue">
+				<div class="side"></div>
+				<div class="side"></div>
+				<div class="side"></div>
+				<div class="side"></div>
+				<div class="side"></div>
+				<div class="side"></div>
+			</div>
 		</div>
 	</body>
 </html>
